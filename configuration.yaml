@@ -1,0 +1,14 @@
+#
+# configuration.yaml
+#
+
+homeassistant:
+  packages: !include_dir_named packages-enabled
+  customize: !include customize.yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+
+# end of file

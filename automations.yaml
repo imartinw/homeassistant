@@ -1,0 +1,468 @@
+- id: oodobohSheuX7ic5
+  alias: leaving Home - everything off
+  trigger:
+  - entity_id: group.all_persons
+    platform: state
+    to: not_home
+  action:
+  - data:
+      entity_id: all
+    service: light.turn_off
+  - data:
+      entity_id: all
+    service: media_player.media_stop
+  - data:
+      entity_id: all
+    service: media_player.turn_off
+  mode: single
+- id: '1590769016333'
+  alias: Heating - Bed Room - Window open - off
+  description: ''
+  trigger:
+  - device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    domain: binary_sensor
+    entity_id: binary_sensor.fenster_schlafzimmer
+    platform: device
+    type: opened
+  condition: []
+  action:
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1590769182078'
+  alias: Heating - Bed Room - Window close - on
+  description: ''
+  trigger:
+  - device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    domain: binary_sensor
+    entity_id: binary_sensor.fenster_schlafzimmer
+    platform: device
+    type: not_opened
+  condition: []
+  action:
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_hvac_mode
+    hvac_mode: heat
+  mode: single
+- id: '1590773879107'
+  alias: leaving home - Heating - eco
+  description: ''
+  trigger:
+  - entity_id: group.all_persons
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - data:
+      entity_id: all
+      preset_mode: eco
+    service: climate.set_preset_mode
+  mode: single
+- id: '1590824968802'
+  alias: coming home - Heating - comfort
+  description: ''
+  trigger:
+  - entity_id: group.all_persons
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data:
+      entity_id: all
+      preset_mode: comfort
+    service: climate.set_preset_mode
+  mode: single
+- id: '1597827460793'
+  alias: wake up Martin - Light
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition:
+  - condition: state
+    entity_id: person.martin
+    state: home
+  - condition: template
+    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
+      int) == 30 }}'
+  action:
+  - data:
+      brightness: 255
+      color_temp: 447
+      effect: none
+      entity_id: group.light_schlafzimmer
+      transition: 1800
+    service: light.turn_on
+  mode: single
+- id: '1602935712311'
+  alias: Heating - Bath - Window close - on
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_hvac_mode
+    hvac_mode: heat
+  mode: single
+- id: '1602936184216'
+  alias: Heating - Bath - Window open - off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1605117158750'
+  alias: Heating - Bed Room - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    entity_id: binary_sensor.fenster_schlafzimmer
+    domain: binary_sensor
+  action:
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1605117282215'
+  alias: Heating - Bed Room - Day
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  - type: is_not_open
+    condition: device
+    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    entity_id: binary_sensor.fenster_schlafzimmer
+    domain: binary_sensor
+  action:
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_preset_mode
+    preset_mode: comfort
+  mode: single
+- id: '1605119089901'
+  alias: Heating - Bath - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  action:
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1605119188485'
+  alias: Heating - Bath - Day
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  - type: is_not_open
+    condition: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  action:
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_preset_mode
+    preset_mode: comfort
+  mode: single
+- id: '1605119308170'
+  alias: Heating - Lab - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition: []
+  action:
+  - device_id: 42b6a7900d4a11eba1110385b993a2ba
+    domain: climate
+    entity_id: climate.fritz_dect_301_lab
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1605119372268'
+  alias: Heating - Lab - Day
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  action:
+  - device_id: 42b6a7900d4a11eba1110385b993a2ba
+    domain: climate
+    entity_id: climate.fritz_dect_301_lab
+    type: set_preset_mode
+    preset_mode: comfort
+  mode: single
+- id: '1605119564191'
+  alias: Heating - Lounge Room - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:00'
+  condition: []
+  action:
+  - device_id: 1406ccb98a2941289b489d89075e5452
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_1
+    type: set_preset_mode
+    preset_mode: eco
+  - device_id: 4d166a5960494ba09a7e2f77f40338bc
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_2
+    type: set_preset_mode
+    preset_mode: eco
+  - device_id: c0081a58e8df4dd9a10789a6ac69c50e
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_3
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1605119686689'
+  alias: Heating - Lounge Room - Day
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  action:
+  - device_id: 1406ccb98a2941289b489d89075e5452
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_1
+    type: set_preset_mode
+    preset_mode: comfort
+  - device_id: 4d166a5960494ba09a7e2f77f40338bc
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_2
+    type: set_preset_mode
+    preset_mode: comfort
+  - device_id: c0081a58e8df4dd9a10789a6ac69c50e
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_3
+    type: set_preset_mode
+    preset_mode: comfort
+  mode: single
+- id: '1606227495586'
+  alias: Kamera 3 - leaving home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: group.all_persons
+    to: not_home
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 2
+  mode: single
+- id: '1606227574337'
+  alias: Kamera 3 - coming home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: group.all_persons
+    to: home
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 8
+  mode: single
+- id: '1607074534569'
+  alias: Heating - perimeter - comfort
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.martin
+    zone: zone.heating_perimeter
+    event: enter
+  condition: []
+  action:
+  - service: climate.set_preset_mode
+    data:
+      entity_id: all
+      preset_mode: comfort
+  mode: single
+- id: '1607447231556'
+  alias: Flood Kitchen - Notify via App
+  description: ''
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 8c643a776f04c5ba3f282bd9a2335e91
+    entity_id: binary_sensor.water_kitchen
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_martin_nokia_7_2
+    data:
+      message: Überflutung in der Küche!!!
+  mode: single
+- id: '1610097482157'
+  alias: coming home - Lights on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: group.all_persons
+    to: home
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: all
+  mode: single
+- id: '1612782380112'
+  alias: wake up Martin - Heating bath on
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition:
+  - condition: state
+    entity_id: person.martin
+    state: home
+  - condition: template
+    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
+      int) == 30 }}'
+  - type: is_not_open
+    condition: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  action:
+  - service: climate.set_temperature
+    target:
+      device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    data:
+      temperature: 24
+  mode: single
+- id: '1612782532073'
+  alias: wake up Martin - Heating bath off
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition:
+  - condition: state
+    entity_id: person.martin
+    state: home
+  - condition: template
+    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
+      int) == 10 }}'
+  - type: is_not_open
+    condition: device
+    device_id: 418e8778106a11eba4bbe7d8d2031815
+    entity_id: binary_sensor.fenster_bad
+    domain: binary_sensor
+  action:
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1626011048565'
+  alias: Flood Kitchen - Notify via Speakers
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '00'
+  condition:
+  - type: is_moist
+    condition: device
+    device_id: 8c643a776f04c5ba3f282bd9a2335e91
+    entity_id: binary_sensor.water_kitchen
+    domain: binary_sensor
+  action:
+  - service: script.sonos_alarm_water_leakage_kitchen
+  mode: single
+- id: '1629999329398'
+  alias: wake up Martin - Sound
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition:
+  - condition: state
+    entity_id: person.martin
+    state: home
+  - condition: template
+    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
+      int) == 30 }}'
+  action:
+  - service: script.sonos_play_birds_singing
+  mode: single
+- id: '1634349031346'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - device_id: 6732069f20c2621770cfb92f65275c71
+        domain: mobile_app
+        type: notify
+        title: ''
+        message: 'Battery of {{sensors}} is low. '
+      threshold: 20

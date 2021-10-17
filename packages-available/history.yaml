@@ -1,0 +1,10 @@
+#
+# Enable history
+#
+
+history:
+  exclude:
+    entity_globs:
+      - automation.*
+      - script.*
+

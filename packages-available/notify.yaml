@@ -1,0 +1,12 @@
+#
+# notify.yaml
+#
+
+notify:
+  - name: xmpp
+    platform: xmpp
+    sender: !secret xmpp_username
+    password: !secret xmpp_password
+    recipient: !secret xmpp_receiver
+    tls: true
+    verify: false

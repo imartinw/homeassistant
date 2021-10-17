@@ -1,0 +1,8 @@
+#
+# set some http parameters
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.178.100
+

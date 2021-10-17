@@ -1,0 +1,124 @@
+sonos_group_speakers:
+  alias: Sonos - group speakers
+  sequence:
+  - data:
+      entity_id:
+      - media_player.sonos_bad
+      - media_player.sonos_schlafzimmer
+      - media_player.sonos_wohnzimmer
+      master: media_player.sonos_flur
+    service: sonos.join
+sonos_set_daytime_volume:
+  alias: Sonos - set volume
+  sequence:
+  - data:
+      volume_level: 0.2
+    service: media_player.volume_set
+    target:
+      entity_id:
+      - media_player.sonos_bad
+      - media_player.sonos_schlafzimmer
+      - media_player.sonos_wohnzimmer
+      - media_player.sonos_flur
+  mode: single
+sonos_play_star_trek_sound:
+  alias: Sonos - play star trek sound
+  sequence:
+  - service: script.sonos_group_speakers
+  - service: script.sonos_set_daytime_volume
+  - data:
+      media_content_id: http://home-pi.fritz.box:8123/local/tos_captain_enters_bridge.mp3
+      media_content_type: music
+    service: media_player.play_media
+    target:
+      entity_id:
+      - media_player.sonos_bad
+      - media_player.sonos_schlafzimmer
+      - media_player.sonos_wohnzimmer
+      - media_player.sonos_flur
+  mode: single
+chromecast_fireplace:
+  alias: Chromecast - Fireplace
+  sequence:
+  - type: turn_on
+    device_id: ab51dd0ba6b748c09cb5b21f845cb48b
+    entity_id: switch.fritz_dect_200_ec
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - service: media_extractor.play_media
+    data:
+      media_content_id: https://www.youtube.com/watch?v=L_LUpnjgPso
+      media_content_type: VIDEO
+    target:
+      entity_id: media_player.chromecast
+  mode: single
+sonos_alarm_water_leakage_kitchen:
+  alias: Sonos - Attention - Flood in the kitchen
+  sequence:
+  - service: sonos.snapshot
+    data:
+      entity_id: media_player.sonos_flur
+  - service: sonos.join
+    data:
+      master: media_player.sonos_flur
+      entity_id: media_player.sonos_bad,media_player.sonos_schlafzimmer,media_player.sonos_wohnzimmer
+  - service: media_player.volume_set
+    target:
+      device_id:
+      - 31f62be191db4c35ba695826db174f1b
+      - c3ffb05f5e614ff7b160822fcc8c4a69
+      - f475446a19724e86af08e18a35c6943e
+      - 6fdd2af62aa6406389400590af31c284
+    data:
+      volume_level: 0.4
+  - repeat:
+      count: '03'
+      sequence:
+      - service: media_player.play_media
+        target:
+          device_id:
+          - 31f62be191db4c35ba695826db174f1b
+          - c3ffb05f5e614ff7b160822fcc8c4a69
+          - f475446a19724e86af08e18a35c6943e
+          - 6fdd2af62aa6406389400590af31c284
+        data:
+          media_content_id: http://home-pi.fritz.box:8123/local/alarm1.wav
+          media_content_type: music
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 500
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.sonos_flur
+      message: Attention! Flood in the kitchen!
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: sonos.restore
+    data:
+      entity_id: media_player.sonos_flur
+  mode: single
+sonos_play_birds_singing:
+  alias: Sonos - play birds singing
+  sequence:
+  - service: script.sonos_group_speakers
+  - service: script.sonos_set_daytime_volume
+  - data:
+      media_content_id: http://home-pi.fritz.box:8123/local/birds.mp3
+      media_content_type: music
+    service: media_player.play_media
+    target:
+      entity_id:
+      - media_player.sonos_bad
+      - media_player.sonos_schlafzimmer
+      - media_player.sonos_wohnzimmer
+      - media_player.sonos_flur
+  mode: single

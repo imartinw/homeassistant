@@ -1,0 +1,24 @@
+#
+# Include cameras
+#
+
+camera:
+  - name: Kamera 2
+    platform: mjpeg
+    still_image_url: http://192.168.178.102/snapshot.cgi
+    mjpeg_url: http://192.168.178.102/videostream.cgi
+    username: !secret camera_username
+    password: !secret camera_password
+
+  - name: Kamera 3
+    platform: mjpeg
+    still_image_url: http://192.168.178.103/snapshot.cgi
+    mjpeg_url: http://192.168.178.103/videostream.cgi
+    username: !secret camera_username
+    password: !secret camera_password
+
+shell_command:
+  kamera2_position: bin/camera_ptz.sh 192.168.178.102 {{ position }}
+  kamera3_position: bin/camera_ptz.sh 192.168.178.103 {{ position }}
+
+# end of file

@@ -1,0 +1,31 @@
+# Files types
+
+*.db
+*.json
+*.log
+*.log.1
+*.log.fault
+
+# Folders
+
+.cloud
+.google.token
+.storage/
+blueprints/
+packages-enabled/
+tts
+www/
+__pycache__/
+
+# Files
+
+.HA_VERSION
+.uuid
+google_calendars.yaml
+ip_bans.yaml
+known_devices.yaml
+secrets.yaml
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+.storage/auth
+.storage/core.restore_state

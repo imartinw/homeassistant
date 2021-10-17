@@ -1,0 +1,9 @@
+#
+# yamaha.yaml
+#
+
+media_player:
+  - platform: yamaha
+
+# endof file
+ 

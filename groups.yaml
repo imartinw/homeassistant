@@ -1,0 +1,25 @@
+all_persons:
+  name: Alle Personen
+  entities:
+    - person.bren
+    - person.martin
+
+light_schlafzimmer:
+  name: Licht Schlafzimmer
+  entities:
+    - light.nachttisch_martin
+    - light.nachttisch_bren
+
+light_flur:
+  name: Licht Flur
+  entities:
+    - light.garderobe
+    - light.flur_decke_1
+    - light.flur_decke_2
+
+light_wohnzimmer:
+  name: Licht Wohnzimmer
+  entities:
+    - light.esstisch
+    - light.deckenfluter
+

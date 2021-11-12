@@ -21,3 +21,40 @@ sensor:
         friendly_name: "DECT 200 PC"
         unit_of_measurement: "W"
         value_template: "{{ state_attr('switch.fritz_dect_200_pc', 'current_power_w') | float}}"
+      fritz_dect_301_wohnzimmer_2_temperatur:
+        friendly_name: "Wohnzimmer"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_wohnzimmer_2', 'current_temperature') }}"
+      fritz_dect_301_wohnzimmer_2_soll_temperatur:
+        friendly_name: "Wohnzimmer"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_wohnzimmer_2', 'temperature') }}"
+      fritz_dect_301_lab_temperatur:
+        friendly_name: "Lab"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_lab', 'current_temperature') }}"
+      fritz_dect_301_lab_soll_temperatur:
+        friendly_name: "Lab"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_lab', 'temperature') }}"
+      fritz_dect_301_bad_temperatur:
+        friendly_name: "Bad"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_bad', 'current_temperature') }}"
+      fritz_dect_301_bad_soll_temperatur:
+        friendly_name: "Bad"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_bad', 'temperature') }}"
+      fritz_dect_301_schlafzimmer_temperatur:
+        friendly_name: "Schlafzimmer"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_schlafzimmer', 'current_temperature') }}"
+      fritz_dect_301_schlafzimmer_soll_temperatur:
+        friendly_name: "Schlafzimmer"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('climate.fritz_dect_301_schlafzimmer', 'temperature') }}"
+      weather_home_soll_temperatur:
+        friendly_name: "draussen"
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('weather.home', 'temperature') }}"
+

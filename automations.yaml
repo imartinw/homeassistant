@@ -4,6 +4,11 @@
   - entity_id: group.all_persons
     platform: state
     to: not_home
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+      milliseconds: 0
   action:
   - data:
       entity_id: all
@@ -134,170 +139,6 @@
     type: set_hvac_mode
     hvac_mode: 'off'
   mode: single
-- id: '1605117158750'
-  alias: Heating - Bed Room - Night
-  description: ''
-  trigger:
-  - platform: time
-    at: '20:00'
-  condition:
-  - type: is_not_open
-    condition: device
-    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    entity_id: binary_sensor.fenster_schlafzimmer
-    domain: binary_sensor
-  action:
-  - device_id: 2d5c144767a1418588125d20c8917c19
-    domain: climate
-    entity_id: climate.fritz_dect_301_schlafzimmer
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
-- id: '1605117282215'
-  alias: Heating - Bed Room - Day
-  description: ''
-  trigger:
-  - platform: time
-    at: 09:00
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
-  - type: is_not_open
-    condition: device
-    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    entity_id: binary_sensor.fenster_schlafzimmer
-    domain: binary_sensor
-  action:
-  - device_id: 2d5c144767a1418588125d20c8917c19
-    domain: climate
-    entity_id: climate.fritz_dect_301_schlafzimmer
-    type: set_preset_mode
-    preset_mode: comfort
-  mode: single
-- id: '1605119089901'
-  alias: Heating - Bath - Night
-  description: ''
-  trigger:
-  - platform: time
-    at: '20:00'
-  condition:
-  - type: is_not_open
-    condition: device
-    device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
-    domain: binary_sensor
-  action:
-  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
-    domain: climate
-    entity_id: climate.fritz_dect_301_bad
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
-- id: '1605119188485'
-  alias: Heating - Bath - Day
-  description: ''
-  trigger:
-  - platform: time
-    at: 09:00
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
-  - type: is_not_open
-    condition: device
-    device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
-    domain: binary_sensor
-  action:
-  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
-    domain: climate
-    entity_id: climate.fritz_dect_301_bad
-    type: set_preset_mode
-    preset_mode: comfort
-  mode: single
-- id: '1605119308170'
-  alias: Heating - Lab - Night
-  description: ''
-  trigger:
-  - platform: time
-    at: '20:00'
-  condition: []
-  action:
-  - device_id: 42b6a7900d4a11eba1110385b993a2ba
-    domain: climate
-    entity_id: climate.fritz_dect_301_lab
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
-- id: '1605119372268'
-  alias: Heating - Lab - Day
-  description: ''
-  trigger:
-  - platform: time
-    at: 09:00
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
-  action:
-  - device_id: 42b6a7900d4a11eba1110385b993a2ba
-    domain: climate
-    entity_id: climate.fritz_dect_301_lab
-    type: set_preset_mode
-    preset_mode: comfort
-  mode: single
-- id: '1605119564191'
-  alias: Heating - Lounge Room - Night
-  description: ''
-  trigger:
-  - platform: time
-    at: '21:00'
-  condition: []
-  action:
-  - device_id: 1406ccb98a2941289b489d89075e5452
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_1
-    type: set_preset_mode
-    preset_mode: eco
-  - device_id: 4d166a5960494ba09a7e2f77f40338bc
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_2
-    type: set_preset_mode
-    preset_mode: eco
-  - device_id: c0081a58e8df4dd9a10789a6ac69c50e
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_3
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
-- id: '1605119686689'
-  alias: Heating - Lounge Room - Day
-  description: ''
-  trigger:
-  - platform: time
-    at: 09:00
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
-  action:
-  - device_id: 1406ccb98a2941289b489d89075e5452
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_1
-    type: set_preset_mode
-    preset_mode: comfort
-  - device_id: 4d166a5960494ba09a7e2f77f40338bc
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_2
-    type: set_preset_mode
-    preset_mode: comfort
-  - device_id: c0081a58e8df4dd9a10789a6ac69c50e
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_3
-    type: set_preset_mode
-    preset_mode: comfort
-  mode: single
 - id: '1606227495586'
   alias: Kamera 3 - leaving home
   description: ''
@@ -393,7 +234,7 @@
     target:
       device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
     data:
-      temperature: 24
+      temperature: 23
   mode: single
 - id: '1612782532073'
   alias: wake up Martin - Heating bath off

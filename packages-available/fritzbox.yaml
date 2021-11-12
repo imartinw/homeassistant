@@ -54,7 +54,7 @@ sensor:
         unit_of_measurement: "°C"
         value_template: "{{ state_attr('climate.fritz_dect_301_schlafzimmer', 'temperature') }}"
       weather_home_soll_temperatur:
-        friendly_name: "draussen"
+        friendly_name: "außen"
         unit_of_measurement: "°C"
         value_template: "{{ state_attr('weather.home', 'temperature') }}"
 

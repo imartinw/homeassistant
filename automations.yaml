@@ -93,7 +93,7 @@
     entity_id: person.martin
     state: home
   - condition: template
-    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
       in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
       int) == 30 }}'
   action:
@@ -221,7 +221,7 @@
     entity_id: person.martin
     state: home
   - condition: template
-    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
       in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
       int) == 30 }}'
   - type: is_not_open
@@ -247,7 +247,7 @@
     entity_id: person.martin
     state: home
   - condition: template
-    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
       in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
       int) == 10 }}'
   - type: is_not_open
@@ -288,7 +288,7 @@
     entity_id: person.martin
     state: home
   - condition: template
-    value_template: '{{ ((((state_attr(''sensor.martin_nokia_g20_next_alarm'', ''Time
+    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
       in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
       int) == 30 }}'
   action:
@@ -307,3 +307,33 @@
         title: ''
         message: 'Battery of {{sensors}} is low. '
       threshold: 20
+- id: '1636987192840'
+  alias: Washing machine has finished - notify
+  description: ''
+  trigger:
+  - type: power
+    platform: device
+    device_id: d71554b5dea436bf70846fef16fec150
+    entity_id: sensor.fritz_dect_210_waschmaschine_power_consumption
+    domain: sensor
+    below: 1
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_phone_martin
+    data:
+      message: Die Waschmaschine ist fertig.
+  - service: notify.mobile_app_nokia_7_2
+    data:
+      message: The washing machine has finished.
+  - service: script.sonos_group_speakers
+  - service: script.sonos_set_daytime_volume
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.sonos_flur
+      message: Washing machine has finished.
+  mode: single

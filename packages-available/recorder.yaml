@@ -8,9 +8,9 @@ recorder:
   exclude:
     entity_globs:
       - binary_sensor.bren_*
-      - binary_sensor.martin*
+      - binary_sensor.phone_*
       - camera.*
       - group.*
       - sensor.bren_*
-      - sensor.martin_*
+      - sensor.phone_*
 

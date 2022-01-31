@@ -210,58 +210,6 @@
     data:
       entity_id: all
   mode: single
-- id: '1612782380112'
-  alias: wake up Martin - Heating bath on
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '0'
-  condition:
-  - condition: state
-    entity_id: person.martin
-    state: home
-  - condition: template
-    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
-      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
-      int) == 30 }}'
-  - type: is_not_open
-    condition: device
-    device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
-    domain: binary_sensor
-  action:
-  - service: climate.set_temperature
-    target:
-      device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
-    data:
-      temperature: 23
-  mode: single
-- id: '1612782532073'
-  alias: wake up Martin - Heating bath off
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '0'
-  condition:
-  - condition: state
-    entity_id: person.martin
-    state: home
-  - condition: template
-    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
-      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
-      int) == 10 }}'
-  - type: is_not_open
-    condition: device
-    device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
-    domain: binary_sensor
-  action:
-  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
-    domain: climate
-    entity_id: climate.fritz_dect_301_bad
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
 - id: '1626011048565'
   alias: Flood Kitchen - Notify via Speakers
   description: ''
@@ -330,10 +278,40 @@
   - service: notify.mobile_app_nokia_7_2
     data:
       message: The washing machine has finished.
-  - service: script.sonos_group_speakers
-  - service: script.sonos_set_daytime_volume
-  - service: tts.google_translate_say
-    data:
-      entity_id: media_player.sonos_flur
-      message: Washing machine has finished.
+  mode: single
+- id: '1637665809651'
+  alias: Heating - Bed Room - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    entity_id: binary_sensor.fenster_schlafzimmer
+    domain: binary_sensor
+  action:
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_preset_mode
+    preset_mode: eco
+  mode: single
+- id: '1642154032007'
+  alias: Heating - Living Room - Night
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00'
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  action:
+  - device_id: 1406ccb98a2941289b489d89075e5452
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_1
+    type: set_preset_mode
+    preset_mode: comfort
   mode: single

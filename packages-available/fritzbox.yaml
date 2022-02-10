@@ -5,22 +5,6 @@
 sensor:
   - platform: template
     sensors:
-      fritz_dect_200_ec_temperatur:
-        friendly_name: "DECT 200 EC"
-        unit_of_measurement: "°C"
-        value_template: "{{ state_attr('switch.fritz_dect_200_ec', 'temperature') }}"
-      fritz_dect_200_pc_temperatur:
-        friendly_name: "DECT 200 PC"
-        unit_of_measurement: "°C"
-        value_template: "{{ state_attr('switch.fritz_dect_200_pc', 'temperature') }}"
-      fritz_dect_200_ec_leistung:
-        friendly_name: "DECT 200 EC"
-        unit_of_measurement: "W"
-        value_template: "{{ state_attr('switch.fritz_dect_200_ec', 'current_power_w') | float}}"
-      fritz_dect_200_pc_leistung:
-        friendly_name: "DECT 200 PC"
-        unit_of_measurement: "W"
-        value_template: "{{ state_attr('switch.fritz_dect_200_pc', 'current_power_w') | float}}"
       fritz_dect_301_wohnzimmer_2_temperatur:
         friendly_name: "Wohnzimmer"
         unit_of_measurement: "°C"

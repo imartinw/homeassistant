@@ -4,13 +4,11 @@
 
 recorder:
   auto_purge: true
-  purge_keep_days: 8
+  purge_keep_days: 365
   exclude:
     entity_globs:
-      - binary_sensor.bren_*
       - binary_sensor.phone_*
       - camera.*
       - group.*
-      - sensor.bren_*
       - sensor.phone_*
 

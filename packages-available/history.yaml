@@ -3,8 +3,17 @@
 #
 
 history:
-  exclude:
+  include:
+    entities:
+      - sensor.fritz_dect_301_wohnzimmer_2_temperatur
+      - sensor.fritz_dect_301_lab_temperatur
+      - sensor.fritz_dect_301_bad_temperatur
+      - sensor.fritz_dect_301_schlafzimmer_temperatur
+      - sensor.outdoor_temperature
     entity_globs:
-      - automation.*
-      - script.*
-
+      - binary_sensor.fenster_*
+      - light.*
+      - person.*
+      - sensor.*_humidity
+      - sensor.*_pressure
+      - sensor.*_power_consumption

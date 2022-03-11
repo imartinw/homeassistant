@@ -279,39 +279,21 @@
     data:
       message: The washing machine has finished.
   mode: single
-- id: '1637665809651'
-  alias: Heating - Bed Room - Night
-  description: ''
-  trigger:
-  - platform: time
-    at: '20:00'
-  condition:
-  - type: is_not_open
-    condition: device
-    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    entity_id: binary_sensor.fenster_schlafzimmer
-    domain: binary_sensor
-  action:
-  - device_id: 2d5c144767a1418588125d20c8917c19
-    domain: climate
-    entity_id: climate.fritz_dect_301_schlafzimmer
-    type: set_preset_mode
-    preset_mode: eco
-  mode: single
 - id: '1642154032007'
-  alias: Heating - Living Room - Night
+  alias: Heating - Night - eco
   description: ''
   trigger:
   - platform: time
     at: '22:00'
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
+  condition: []
   action:
-  - device_id: 1406ccb98a2941289b489d89075e5452
-    domain: climate
-    entity_id: climate.fritz_dect_301_wohnzimmer_1
-    type: set_preset_mode
-    preset_mode: comfort
+  - service: climate.set_preset_mode
+    data:
+      preset_mode: eco
+    target:
+      area_id:
+      - 8b35cee82e3042cea4a6a9fb6f71abde
+      - a661129e107511ebaae3879635fdfa9e
+      - 479fc1f710c3442d912b65cd08775308
+      - 05f5de06b095458daa5299a1b125c1b3
   mode: single

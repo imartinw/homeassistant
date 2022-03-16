@@ -5,6 +5,7 @@
 history:
   include:
     entities:
+      - binary_sensor.water_kitchen
       - sensor.fritz_dect_301_wohnzimmer_2_temperatur
       - sensor.fritz_dect_301_lab_temperatur
       - sensor.fritz_dect_301_bad_temperatur
@@ -14,6 +15,7 @@ history:
       - binary_sensor.fenster_*
       - light.*
       - person.*
+      - sensor.*_battery_level
       - sensor.*_humidity
       - sensor.*_pressure
       - sensor.*_power_consumption

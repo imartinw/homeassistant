@@ -275,16 +275,17 @@
   - service: notify.mobile_app_phone_martin
     data:
       message: Die Waschmaschine ist fertig.
-  - service: notify.mobile_app_nokia_7_2
+  - service: notify.mobile_app_phone_bren
     data:
-      message: The washing machine has finished.
+      message: The washing machine has finished
   mode: single
 - id: '1642154032007'
-  alias: Heating - Night - eco
-  description: ''
+  alias: Heating - 05:00 - eco
+  description: 'A nasty workaround to avoid over heating after the central eco mode
+    ends. '
   trigger:
   - platform: time
-    at: '22:00'
+    at: 05:00:00
   condition: []
   action:
   - service: climate.set_preset_mode
@@ -311,6 +312,24 @@
   - service: climate.set_preset_mode
     data:
       preset_mode: comfort
+    target:
+      area_id:
+      - 8b35cee82e3042cea4a6a9fb6f71abde
+      - a661129e107511ebaae3879635fdfa9e
+      - 479fc1f710c3442d912b65cd08775308
+      - 05f5de06b095458daa5299a1b125c1b3
+  mode: single
+- id: '1647763277456'
+  alias: Heating - Night - eco
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition: []
+  action:
+  - service: climate.set_preset_mode
+    data:
+      preset_mode: eco
     target:
       area_id:
       - 8b35cee82e3042cea4a6a9fb6f71abde

@@ -19,3 +19,5 @@ history:
       - sensor.*_humidity
       - sensor.*_pressure
       - sensor.*_power_consumption
+      - switch.fritz_dect_200_*
+      - switch.fritz_dect_210_*

@@ -53,6 +53,11 @@
     entity_id: climate.fritz_dect_301_schlafzimmer
     type: set_hvac_mode
     hvac_mode: heat
+  - device_id: 2d5c144767a1418588125d20c8917c19
+    domain: climate
+    entity_id: climate.fritz_dect_301_schlafzimmer
+    type: set_preset_mode
+    preset_mode: eco
   mode: single
 - id: '1590773879107'
   alias: leaving home - Heating - eco
@@ -121,6 +126,11 @@
     entity_id: climate.fritz_dect_301_bad
     type: set_hvac_mode
     hvac_mode: heat
+  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
+    domain: climate
+    entity_id: climate.fritz_dect_301_bad
+    type: set_preset_mode
+    preset_mode: eco
   mode: single
 - id: '1602936184216'
   alias: Heating - Bath - Window open - off

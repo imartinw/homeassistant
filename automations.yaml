@@ -24,11 +24,11 @@
   alias: Heating - Bed Room - Window open - off
   description: ''
   trigger:
-  - device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    domain: binary_sensor
-    entity_id: binary_sensor.fenster_schlafzimmer
+  - type: opened
     platform: device
-    type: opened
+    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+    domain: binary_sensor
   condition: []
   action:
   - device_id: 2d5c144767a1418588125d20c8917c19
@@ -41,11 +41,11 @@
   alias: Heating - Bed Room - Window close - on
   description: ''
   trigger:
-  - device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    domain: binary_sensor
-    entity_id: binary_sensor.fenster_schlafzimmer
+  - type: not_opened
     platform: device
-    type: not_opened
+    device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+    domain: binary_sensor
   condition: []
   action:
   - device_id: 2d5c144767a1418588125d20c8917c19
@@ -117,7 +117,7 @@
   - type: not_opened
     platform: device
     device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
     domain: binary_sensor
   condition: []
   action:
@@ -139,7 +139,7 @@
   - type: opened
     platform: device
     device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.fenster_bad
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
     domain: binary_sensor
   condition: []
   action:
@@ -197,7 +197,7 @@
   - type: moist
     platform: device
     device_id: 8c643a776f04c5ba3f282bd9a2335e91
-    entity_id: binary_sensor.water_kitchen
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_6fbb6404_ias_zone
     domain: binary_sensor
   condition: []
   action:
@@ -230,10 +230,11 @@
   - type: is_moist
     condition: device
     device_id: 8c643a776f04c5ba3f282bd9a2335e91
-    entity_id: binary_sensor.water_kitchen
+    entity_id: binary_sensor.lumi_lumi_sensor_wleak_aq1_6fbb6404_ias_zone
     domain: binary_sensor
   action:
   - service: script.sonos_alarm_water_leakage_kitchen
+    data: {}
   mode: single
 - id: '1629999329398'
   alias: wake up Martin - Sound
@@ -259,11 +260,9 @@
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
     input:
       actions:
-      - device_id: 6732069f20c2621770cfb92f65275c71
-        domain: mobile_app
-        type: notify
-        title: ''
-        message: 'Battery of {{sensors}} is low. '
+      - service: notify.mobile_app_phone_martin
+        data:
+          message: Battery of {{sensors}} is low.
       threshold: 20
 - id: '1636987192840'
   alias: Washing machine has finished - notify
@@ -346,4 +345,19 @@
       - a661129e107511ebaae3879635fdfa9e
       - 479fc1f710c3442d912b65cd08775308
       - 05f5de06b095458daa5299a1b125c1b3
+  mode: single
+- id: '1656158846249'
+  alias: Mausalarm - Falle 1
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 09d050fac85f97325f8bb2526730f0e4
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_on_off
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_phone_martin
+    data:
+      message: Mausalarm! Maus in Falle 1
   mode: single

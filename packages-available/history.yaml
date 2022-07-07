@@ -21,3 +21,5 @@ history:
       - sensor.*_power_consumption
       - switch.fritz_dect_200_*
       - switch.fritz_dect_210_*
+
+#  vim: set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 expandtab : 

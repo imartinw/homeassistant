@@ -5,10 +5,10 @@
 recorder:
   auto_purge: true
   purge_keep_days: 8
-  exclude:
-    entity_globs:
-      - binary_sensor.phone_*
-      - camera.*
-      - group.*
-      - sensor.phone_*
+#  exclude:
+#    entity_globs:
+#      - binary_sensor.phone_*
+#      - camera.*
+#      - group.*
+#      - sensor.phone_*
 

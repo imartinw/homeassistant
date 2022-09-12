@@ -191,7 +191,7 @@
       preset_mode: comfort
   mode: single
 - id: '1607447231556'
-  alias: Flood Kitchen - Notify via App
+  alias: Flood Kitchen - notify
   description: ''
   trigger:
   - type: moist
@@ -201,9 +201,9 @@
     domain: binary_sensor
   condition: []
   action:
-  - service: notify.mobile_app_martin_nokia_7_2
+  - service: notify.notify
     data:
-      message: Überflutung in der Küche!!!
+      message: Achtung! Wasserleck in der Kueche!
   mode: single
 - id: '1610097482157'
   alias: coming home - Lights on
@@ -221,7 +221,7 @@
       entity_id: all
   mode: single
 - id: '1626011048565'
-  alias: Flood Kitchen - Notify via Speakers
+  alias: Flood Kitchen - Sonos Alarm
   description: ''
   trigger:
   - platform: time_pattern
@@ -260,7 +260,7 @@
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
     input:
       actions:
-      - service: notify.mobile_app_phone_martin
+      - service: notify.notify
         data:
           message: Battery of {{sensors}} is low.
       threshold: 20
@@ -281,31 +281,9 @@
       milliseconds: 0
   condition: []
   action:
-  - service: notify.mobile_app_phone_martin
+  - service: notify.notify
     data:
       message: Die Waschmaschine ist fertig.
-  - service: notify.mobile_app_phone_bren
-    data:
-      message: The washing machine has finished
-  mode: single
-- id: '1642154032007'
-  alias: Heating - 05:00 - eco
-  description: 'A nasty workaround to avoid over heating after the central eco mode
-    ends. '
-  trigger:
-  - platform: time
-    at: 05:00:00
-  condition: []
-  action:
-  - service: climate.set_preset_mode
-    data:
-      preset_mode: eco
-    target:
-      area_id:
-      - 8b35cee82e3042cea4a6a9fb6f71abde
-      - a661129e107511ebaae3879635fdfa9e
-      - 479fc1f710c3442d912b65cd08775308
-      - 05f5de06b095458daa5299a1b125c1b3
   mode: single
 - id: '1647181130520'
   alias: Heating - Day - comfort
@@ -357,7 +335,7 @@
     domain: binary_sensor
   condition: []
   action:
-  - service: notify.mobile_app_phone_martin
+  - service: notify.notify
     data:
-      message: Mausalarm! Maus in Falle 1
+      message: Mausalarm in Falle 1
   mode: single

@@ -1,8 +1,0 @@
-#
-# tts.yaml
-#
-
-tts:
-  - platform: google_translate
-
-# end of file

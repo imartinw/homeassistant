@@ -1,0 +1,5 @@
+blueprint:
+  name: Heating set preset
+  description: Set the preset of a heating but respect the open / close state of the window
+  domain: script
+

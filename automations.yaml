@@ -53,11 +53,6 @@
     entity_id: climate.fritz_dect_301_schlafzimmer
     type: set_hvac_mode
     hvac_mode: heat
-  - device_id: 2d5c144767a1418588125d20c8917c19
-    domain: climate
-    entity_id: climate.fritz_dect_301_schlafzimmer
-    type: set_preset_mode
-    preset_mode: eco
   mode: single
 - id: '1590773879107'
   alias: leaving home - Heating - eco
@@ -126,11 +121,6 @@
     entity_id: climate.fritz_dect_301_bad
     type: set_hvac_mode
     hvac_mode: heat
-  - device_id: 42b629f30d4a11eba25a1b41c9e5b7dd
-    domain: climate
-    entity_id: climate.fritz_dect_301_bad
-    type: set_preset_mode
-    preset_mode: eco
   mode: single
 - id: '1602936184216'
   alias: Heating - Bath - Window open - off
@@ -154,7 +144,8 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: group.all_persons
+    entity_id:
+    - group.all_persons
     to: not_home
   condition: []
   action:
@@ -167,7 +158,8 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: group.all_persons
+    entity_id:
+    - group.all_persons
     to: home
   condition: []
   action:
@@ -236,23 +228,6 @@
   - service: script.sonos_alarm_water_leakage_kitchen
     data: {}
   mode: single
-- id: '1629999329398'
-  alias: wake up Martin - Sound
-  description: ''
-  trigger:
-  - platform: time_pattern
-    seconds: '0'
-  condition:
-  - condition: state
-    entity_id: person.martin
-    state: home
-  - condition: template
-    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
-      in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
-      int) == 30 }}'
-  action:
-  - service: script.sonos_play_birds_singing
-  mode: single
 - id: '1634349031346'
   alias: Low battery level detection & notification for all battery sensors
   description: ''
@@ -290,7 +265,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 09:00:00
+    at: 07:00:00
   condition:
   - condition: state
     entity_id: group.all_persons

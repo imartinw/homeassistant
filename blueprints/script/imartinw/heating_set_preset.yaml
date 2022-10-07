@@ -2,4 +2,43 @@ blueprint:
   name: Heating set preset
   description: Set the preset of a heating but respect the open / close state of the window
   domain: script
+  source_url: https://gitlab.martinwiesemann.de/martin/homeassistant/-/blob/master/blueprints/script/imartinw/heating_set_preset.yaml
+  input:
+    heating_device:
+      name: Heating Device
+      selector:
+        entity:
+          domain: climate
+    preset:
+      name: Preset value
+      selector:
+        select:
+          options:
+            - eco
+            - comfort
+    window_sensor:
+      name: Window Sensor
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: opening
+
+sequence:
+  - if:
+      - alias: "If the window is open"
+        condition: state
+        entity_id: !input window_sensor
+        state: "on"
+    then:
+      - alias: "tun of the heating"
+        service: climate.set_hvac_mode
+        data:
+          entity_id: !input heating_device
+          hvac_mode: "off"
+    else:
+      - alias: "set selected preset mode"
+        service: climate.set_preset_mode
+        data:
+          entity_id: !input heating_device
+          preset_mode: !input preset
 

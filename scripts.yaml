@@ -34,3 +34,39 @@ sonos_alarm_water_leakage_kitchen:
       seconds: 5
       milliseconds: 0
   mode: single
+heating_bedroom_set_preset_eco:
+  alias: Heating bedroom set preset eco
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_schlafzimmer
+      preset: eco
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+  mode: single
+heating_bedroom_set_preset_comfort:
+  alias: Heating bedroom set preset comfort
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_schlafzimmer
+      preset: comfort
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+  mode: single
+heating_bath_set_preset_eco:
+  alias: Heating bath set preset eco
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_bad
+      preset: eco
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+  mode: single
+heating_bath_set_preset_comfort:
+  alias: Heating bath set preset comfort
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_bad
+      preset: comfort
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+  mode: single

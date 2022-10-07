@@ -278,8 +278,10 @@
       area_id:
       - 8b35cee82e3042cea4a6a9fb6f71abde
       - a661129e107511ebaae3879635fdfa9e
-      - 479fc1f710c3442d912b65cd08775308
-      - 05f5de06b095458daa5299a1b125c1b3
+  - service: script.heating_bath_set_preset_comfort
+    data: {}
+  - service: script.heating_bedroom_set_preset_comfort
+    data: {}
   mode: single
 - id: '1647763277456'
   alias: Heating - Night - eco
@@ -296,8 +298,10 @@
       area_id:
       - 8b35cee82e3042cea4a6a9fb6f71abde
       - a661129e107511ebaae3879635fdfa9e
-      - 479fc1f710c3442d912b65cd08775308
-      - 05f5de06b095458daa5299a1b125c1b3
+  - service: script.heating_bath_set_preset_eco
+    data: {}
+  - service: script.heating_bedroom_set_preset_eco
+    data: {}
   mode: single
 - id: '1656158846249'
   alias: Mausalarm - Falle 1

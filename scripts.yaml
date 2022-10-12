@@ -70,3 +70,39 @@ heating_bath_set_preset_comfort:
       preset: comfort
       window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
   mode: single
+heating_livingroom_set_preset_comfort:
+  alias: Heating livingroom set preset comfort
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_wohnzimmer_2
+      preset: comfort
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_livingroom_opening
+  mode: single
+heating_livingroom_set_preset_eco:
+  alias: Heating livingroom set preset eco
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_wohnzimmer_2
+      preset: eco
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_livingroom_opening
+  mode: single
+heating_lab_set_preset_comfort:
+  alias: Heating lab set preset comfort
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_lab
+      preset: comfort
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_lab_opening
+  mode: single
+heating_lab_set_preset_eco:
+  alias: Heating lab set preset eco
+  use_blueprint:
+    path: imartinw/heating_set_preset.yaml
+    input:
+      heating_device: climate.fritz_dect_301_lab
+      preset: eco
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_lab_opening
+  mode: single

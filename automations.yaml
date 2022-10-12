@@ -271,16 +271,13 @@
     entity_id: group.all_persons
     state: home
   action:
-  - service: climate.set_preset_mode
-    data:
-      preset_mode: comfort
-    target:
-      area_id:
-      - 8b35cee82e3042cea4a6a9fb6f71abde
-      - a661129e107511ebaae3879635fdfa9e
   - service: script.heating_bath_set_preset_comfort
     data: {}
   - service: script.heating_bedroom_set_preset_comfort
+    data: {}
+  - service: script.heating_livingroom_set_preset_comfort
+    data: {}
+  - service: script.heating_lab_set_preset_comfort
     data: {}
   mode: single
 - id: '1647763277456'
@@ -291,16 +288,13 @@
     at: '22:00:00'
   condition: []
   action:
-  - service: climate.set_preset_mode
-    data:
-      preset_mode: eco
-    target:
-      area_id:
-      - 8b35cee82e3042cea4a6a9fb6f71abde
-      - a661129e107511ebaae3879635fdfa9e
   - service: script.heating_bath_set_preset_eco
     data: {}
   - service: script.heating_bedroom_set_preset_eco
+    data: {}
+  - service: script.heating_livingroom_set_preset_eco
+    data: {}
+  - service: script.heating_lab_set_preset_eco
     data: {}
   mode: single
 - id: '1656158846249'
@@ -317,4 +311,72 @@
   - service: notify.notify
     data:
       message: Mausalarm in Falle 1
+  mode: single
+- id: '1665397971672'
+  alias: Heating - Livin Rroom - Door open - off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: a946910b39684795301d7d899f3c852c
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_livingroom_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 4d166a5960494ba09a7e2f77f40338bc
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_2
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1665398028741'
+  alias: Heating - Living Room - Door closed - on
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: a946910b39684795301d7d899f3c852c
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_livingroom_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 4d166a5960494ba09a7e2f77f40338bc
+    domain: climate
+    entity_id: climate.fritz_dect_301_wohnzimmer_2
+    type: set_hvac_mode
+    hvac_mode: heat
+  mode: single
+- id: '1665399099491'
+  alias: Heating - Lab - Door open - off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: f3f45fe65da31a719af1f04175148330
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_lab_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 42b6a7900d4a11eba1110385b993a2ba
+    domain: climate
+    entity_id: climate.fritz_dect_301_lab
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1665399269979'
+  alias: Heating - Livin Rroom - Door closed - on
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: f3f45fe65da31a719af1f04175148330
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_lab_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: 42b6a7900d4a11eba1110385b993a2ba
+    domain: climate
+    entity_id: climate.fritz_dect_301_lab
+    type: set_hvac_mode
+    hvac_mode: heat
   mode: single

@@ -313,7 +313,7 @@
       message: Mausalarm in Falle 1
   mode: single
 - id: '1665397971672'
-  alias: Heating - Livin Rroom - Door open - off
+  alias: Heating - Living Room - Door open - off
   description: ''
   trigger:
   - type: opened
@@ -364,7 +364,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1665399269979'
-  alias: Heating - Livin Rroom - Door closed - on
+  alias: Heating - Living Room - Door closed - on
   description: ''
   trigger:
   - type: not_opened

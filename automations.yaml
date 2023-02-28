@@ -1,5 +1,6 @@
 - id: oodobohSheuX7ic5
-  alias: leaving Home - everything off
+  alias: 10 leaving Home - everything off
+  description: ''
   trigger:
   - entity_id: group.all_persons
     platform: state
@@ -8,7 +9,6 @@
       hours: 0
       minutes: 15
       seconds: 0
-      milliseconds: 0
   action:
   - data:
       entity_id: all
@@ -27,7 +27,7 @@
   - type: opened
     platform: device
     device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2
     domain: binary_sensor
   condition: []
   action:
@@ -44,7 +44,7 @@
   - type: not_opened
     platform: device
     device_id: 8dbec2681f6b4fa2a8deed7eaaba8367
-    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2
     domain: binary_sensor
   condition: []
   action:
@@ -53,14 +53,21 @@
     entity_id: climate.fritz_dect_301_schlafzimmer
     type: set_hvac_mode
     hvac_mode: heat
+  - service: script.heating_bedroom_set_preset_comfort
+    data: {}
   mode: single
 - id: '1590773879107'
-  alias: leaving home - Heating - eco
+  alias: 10 leaving home - Heating - eco
   description: ''
   trigger:
-  - entity_id: group.all_persons
+  - entity_id:
+    - group.all_persons
     platform: state
     to: not_home
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
   condition: []
   action:
   - data:
@@ -69,7 +76,7 @@
     service: climate.set_preset_mode
   mode: single
 - id: '1590824968802'
-  alias: coming home - Heating - comfort
+  alias: 10 coming home - Heating - comfort
   description: ''
   trigger:
   - entity_id: group.all_persons
@@ -112,7 +119,7 @@
   - type: not_opened
     platform: device
     device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
     domain: binary_sensor
   condition: []
   action:
@@ -121,6 +128,8 @@
     entity_id: climate.fritz_dect_301_bad
     type: set_hvac_mode
     hvac_mode: heat
+  - service: script.heating_bath_set_preset_comfort
+    data: {}
   mode: single
 - id: '1602936184216'
   alias: Heating - Bath - Window open - off
@@ -129,7 +138,7 @@
   - type: opened
     platform: device
     device_id: 418e8778106a11eba4bbe7d8d2031815
-    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
     domain: binary_sensor
   condition: []
   action:
@@ -140,35 +149,33 @@
     hvac_mode: 'off'
   mode: single
 - id: '1606227495586'
-  alias: Kamera 3 - leaving home
+  alias: sunrise - Kamera 3
   description: ''
   trigger:
-  - platform: state
-    entity_id:
-    - group.all_persons
-    to: not_home
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 3
+  mode: single
+- id: '1606227574337'
+  alias: sunset - Kamera 3
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
   condition: []
   action:
   - service: shell_command.kamera3_position
     data:
       position: 2
   mode: single
-- id: '1606227574337'
-  alias: Kamera 3 - coming home
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - group.all_persons
-    to: home
-  condition: []
-  action:
-  - service: shell_command.kamera3_position
-    data:
-      position: 8
-  mode: single
 - id: '1607074534569'
-  alias: Heating - perimeter - comfort
+  alias: 10 Heating - perimeter - comfort
   description: ''
   trigger:
   - platform: zone
@@ -198,7 +205,7 @@
       message: Achtung! Wasserleck in der Kueche!
   mode: single
 - id: '1610097482157'
-  alias: coming home - Lights on
+  alias: 10 coming home - Lights on
   description: ''
   trigger:
   - platform: state
@@ -229,7 +236,7 @@
     data: {}
   mode: single
 - id: '1634349031346'
-  alias: Low battery level detection & notification for all battery sensors
+  alias: 99 Low battery level detection & notification for all battery sensors
   description: ''
   use_blueprint:
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
@@ -261,7 +268,7 @@
       message: Die Waschmaschine ist fertig.
   mode: single
 - id: '1647181130520'
-  alias: Heating - Day - comfort
+  alias: 20 Heating - Day - comfort
   description: ''
   trigger:
   - platform: time
@@ -281,11 +288,11 @@
     data: {}
   mode: single
 - id: '1647763277456'
-  alias: Heating - Night - eco
+  alias: 20 Heating - Night - eco
   description: ''
   trigger:
   - platform: time
-    at: '22:00:00'
+    at: '23:00:00'
   condition: []
   action:
   - service: script.heating_bath_set_preset_eco
@@ -345,6 +352,8 @@
     entity_id: climate.fritz_dect_301_wohnzimmer_2
     type: set_hvac_mode
     hvac_mode: heat
+  - service: script.heating_livingroom_set_preset_comfort
+    data: {}
   mode: single
 - id: '1665399099491'
   alias: Heating - Lab - Door open - off
@@ -364,7 +373,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1665399269979'
-  alias: Heating - Living Room - Door closed - on
+  alias: Heating - Lab - Door closed - on
   description: ''
   trigger:
   - type: not_opened
@@ -379,4 +388,32 @@
     entity_id: climate.fritz_dect_301_lab
     type: set_hvac_mode
     hvac_mode: heat
+  - service: script.heating_lab_set_preset_comfort
+    data: {}
+  mode: single
+- id: '1666596552565'
+  alias: 99 Maintenance - Fritz Tools cleanup
+  description: ''
+  trigger:
+  - platform: time
+    at: 03:00:00
+  condition: []
+  action:
+  - service: fritz.cleanup
+    data:
+      device_id: cb7fe6ff2c0d6bfe06046f9003819aaa
+  mode: single
+- id: '1674492461101'
+  alias: 10 leaving home - Kamera 2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.all_persons
+    to: not_home
+  condition: []
+  action:
+  - service: shell_command.kamera2_position
+    data:
+      position: 1
   mode: single

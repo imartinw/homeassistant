@@ -3,7 +3,7 @@ sonos_alarm_water_leakage_kitchen:
   sequence:
   - service: media_player.volume_set
     data:
-      volume_level: 0.4
+      volume_level: 0.8
     target:
       device_id:
       - 31f62be191db4c35ba695826db174f1b
@@ -41,7 +41,7 @@ heating_bedroom_set_preset_eco:
     input:
       heating_device: climate.fritz_dect_301_schlafzimmer
       preset: eco
-      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2
   mode: single
 heating_bedroom_set_preset_comfort:
   alias: Heating bedroom set preset comfort
@@ -50,7 +50,7 @@ heating_bedroom_set_preset_comfort:
     input:
       heating_device: climate.fritz_dect_301_schlafzimmer
       preset: comfort
-      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_a4257d04_on_off
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_2
   mode: single
 heating_bath_set_preset_eco:
   alias: Heating bath set preset eco
@@ -59,7 +59,7 @@ heating_bath_set_preset_eco:
     input:
       heating_device: climate.fritz_dect_301_bad
       preset: eco
-      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
   mode: single
 heating_bath_set_preset_comfort:
   alias: Heating bath set preset comfort
@@ -68,7 +68,7 @@ heating_bath_set_preset_comfort:
     input:
       heating_device: climate.fritz_dect_301_bad
       preset: comfort
-      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_b8c8ab04_on_off
+      window_sensor: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
   mode: single
 heating_livingroom_set_preset_comfort:
   alias: Heating livingroom set preset comfort

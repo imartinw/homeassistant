@@ -148,19 +148,6 @@
     type: set_hvac_mode
     hvac_mode: 'off'
   mode: single
-- id: '1606227495586'
-  alias: sunrise - Kamera 3
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
-    offset: 0
-  condition: []
-  action:
-  - service: shell_command.kamera3_position
-    data:
-      position: 3
-  mode: single
 - id: '1606227574337'
   alias: sunset - Kamera 3
   description: ''
@@ -172,7 +159,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 2
+      position: 4
   mode: single
 - id: '1607074534569'
   alias: 10 Heating - perimeter - comfort
@@ -190,7 +177,7 @@
       preset_mode: comfort
   mode: single
 - id: '1607447231556'
-  alias: Flood Kitchen - notify
+  alias: Flood Kitchen - alarm
   description: ''
   trigger:
   - type: moist
@@ -203,6 +190,8 @@
   - service: notify.notify
     data:
       message: Achtung! Wasserleck in der Kueche!
+      data:
+        channel: Alarm
   mode: single
 - id: '1610097482157'
   alias: 10 coming home - Lights on

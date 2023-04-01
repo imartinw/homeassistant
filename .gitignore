@@ -8,13 +8,12 @@
 
 # Folders
 
-.cloud
-.google.token
+.cloud/
 .storage/
+image/
 packages-enabled/
-tts
+tts/
 www/
-__pycache__/
 
 # Files
 

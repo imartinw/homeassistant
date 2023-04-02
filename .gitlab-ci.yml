@@ -6,7 +6,9 @@ stages:
 
 test:
   stage: test
-  image: homeassistant/amd64-homeassistant
+  image: ghcr.io/home-assistant/home-assistant:stable
+  tags:
+    - homeassistant
   script:
     - hass --script check_config -c .
 

@@ -7,7 +7,7 @@ deploy_www:
         - homeassistant
     when: always
     only:
-        - main
+        - master
     allow_failure: false
     script:
         - cd /usr/local/docker/homeassistant/

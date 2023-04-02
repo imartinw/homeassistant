@@ -11,5 +11,5 @@ deploy_www:
     allow_failure: false
     script:
         - cd /usr/local/docker/homeassistant/
-        - git pull origin main
+        - git pull origin master
 

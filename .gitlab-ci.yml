@@ -1,0 +1,15 @@
+stages:
+    - deploy
+
+deploy_www:
+    stage: deploy
+    tags:
+        - homeassistant
+    when: always
+    only:
+        - main
+    allow_failure: false
+    script:
+        - cd /usr/local/docker/homeassistant/
+        - git pull origin main
+

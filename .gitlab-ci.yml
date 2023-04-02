@@ -1,7 +1,7 @@
 stages:
     - deploy
 
-deploy_www:
+deploy_ha:
     stage: deploy
     tags:
         - homeassistant

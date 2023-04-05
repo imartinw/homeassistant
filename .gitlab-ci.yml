@@ -1,7 +1,7 @@
 # https://about.gitlab.com/blog/2018/08/02/using-the-gitlab-ci-slash-cd-for-smart-home-configuration-management/
 
 stages:
-    - test
+ #   - test
     - deploy
 
 test:

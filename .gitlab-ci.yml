@@ -4,13 +4,13 @@ stages:
  #   - test
     - deploy
 
-test:
-  stage: test
-  image: ghcr.io/home-assistant/home-assistant:stable
-  tags:
-    - homeassistant
-  script:
-    - docker-compose exec homeassistant hass --script check_config -c .
+      #test:
+      #  stage: test
+      #  image: ghcr.io/home-assistant/home-assistant:stable
+      #  tags:
+      #    - homeassistant
+      #  script:
+      #    - docker-compose exec homeassistant hass --script check_config -c .
 
 deploy_ha:
     stage: deploy

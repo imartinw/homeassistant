@@ -10,7 +10,7 @@ test:
   tags:
     - homeassistant
   script:
-    - pwd
+    - docker-compose exec homeassistant "hass --script check_config -c ."
 
 deploy_ha:
     stage: deploy

@@ -10,7 +10,7 @@ test:
   tags:
     - homeassistant
   script:
-    - docker-compose exec homeassistant "hass --script check_config -c ." ; true
+    - docker-compose exec homeassistant "hass --script check_config -c ." ; false
 
 deploy_ha:
     stage: deploy

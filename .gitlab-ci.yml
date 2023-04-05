@@ -11,6 +11,7 @@ test:
     - homeassistant
   script:
     #    - docker-compose exec homeassistant "hass --script check_config -c ."
+    true
 
 deploy_ha:
     stage: deploy

@@ -23,5 +23,5 @@ deploy_ha:
     script:
         - cd /usr/local/docker/homeassistant/
         - git pull origin main
-        - docker-conpose restart homeassistant
+        - docker-compose restart homeassistant
 

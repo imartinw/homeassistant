@@ -1,7 +1,19 @@
 # https://about.gitlab.com/blog/2018/08/02/using-the-gitlab-ci-slash-cd-for-smart-home-configuration-management/
 
 stages:
+    - test
     - deploy
+
+test_ha:
+    stage: test
+    tags:
+        - homeassistant
+    when: always
+    only:
+        - main
+    allow_failure: false
+    script:
+      - docker run -v $PWD:/config "ghcr.io/home-assistant/home-assistant:stable" /usr/local/bin/hass --script check_config -c /config
 
 deploy_ha:
     stage: deploy

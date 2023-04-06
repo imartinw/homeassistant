@@ -10,8 +10,6 @@
 
 .cloud/
 .storage/
-image/
-packages-enabled/
 tts/
 www/
 

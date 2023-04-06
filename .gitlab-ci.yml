@@ -19,7 +19,7 @@ deploy_ha:
     stage: deploy
     tags:
         - homeassistant
-    when: always
+          #    when: always
     only:
         - main
     allow_failure: false

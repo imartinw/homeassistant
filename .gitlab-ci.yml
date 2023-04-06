@@ -25,6 +25,7 @@ deploy_ha:
     allow_failure: false
     script:
         - cd /usr/local/docker/homeassistant/
+        - umask 0002
         - git pull origin main
         - docker-compose restart homeassistant
 

@@ -148,19 +148,6 @@
     type: set_hvac_mode
     hvac_mode: 'off'
   mode: single
-- id: '1606227574337'
-  alias: sunset - Kamera 3
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunset
-    offset: 0
-  condition: []
-  action:
-  - service: shell_command.kamera3_position
-    data:
-      position: 4
-  mode: single
 - id: '1607074534569'
   alias: 10 Heating - perimeter - comfort
   description: ''
@@ -403,6 +390,34 @@
   condition: []
   action:
   - service: shell_command.kamera2_position
+    data:
+      position: 1
+  mode: single
+- id: '1681130457609'
+  alias: Kamera 3 - coming home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.all_persons
+    to: home
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 8
+  mode: single
+- id: '1681130589564'
+  alias: Kamera 3 - leaving home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.all_persons
+    to: away
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
     data:
       position: 1
   mode: single

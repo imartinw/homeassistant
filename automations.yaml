@@ -421,3 +421,30 @@
     data:
       position: 1
   mode: single
+- id: '1681389597757'
+  alias: WallE - leaving home - start
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.all_persons
+    to: away
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - repeat:
+      count: '10'
+      sequence:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.walle_start
+        metadata: {}
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+  mode: single

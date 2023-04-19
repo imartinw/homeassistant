@@ -422,7 +422,7 @@
       position: 1
   mode: single
 - id: '1681389597757'
-  alias: WallE - leaving home - start
+  alias: WallE - start
   description: ''
   trigger:
   - platform: state
@@ -433,6 +433,8 @@
       hours: 0
       minutes: 5
       seconds: 0
+  - platform: time
+    at: '15:00:00'
   condition: []
   action:
   - repeat:

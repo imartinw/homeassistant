@@ -438,7 +438,7 @@
   condition: []
   action:
   - repeat:
-      count: '10'
+      count: '5'
       sequence:
       - service: scene.turn_on
         target:

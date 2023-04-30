@@ -1,0 +1,9 @@
+#
+# backup.yaml
+#
+
+shell_command:
+  upload_lastest_backup: bin/upload_lastest_backup.sh
+  delete_old_backups: bin/delete_old_backups.sh
+
+# end of file

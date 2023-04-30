@@ -368,7 +368,7 @@
     data: {}
   mode: single
 - id: '1666596552565'
-  alias: 99 Maintenance - Fritz Tools cleanup
+  alias: 99 - Fritz Tools cleanup
   description: ''
   trigger:
   - platform: time
@@ -449,4 +449,37 @@
           minutes: 0
           seconds: 1
           milliseconds: 0
+  mode: single
+- id: '1682846488708'
+  alias: 99 - Backup data
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:00:00
+  condition: []
+  action:
+  - service: backup.create
+    data: {}
+  mode: single
+- id: '1682854788462'
+  alias: 99 - Upload latest backup
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:30:00
+  condition: []
+  action:
+  - service: shell_command.upload_lastest_backup
+    data: {}
+  mode: single
+- id: '1682854898667'
+  alias: 99 - Delete old backups
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:25:00
+  condition: []
+  action:
+  - service: shell_command.delete_old_backups
+    data: {}
   mode: single

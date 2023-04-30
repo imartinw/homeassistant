@@ -10,6 +10,7 @@
 
 .cloud/
 .storage/
+backups/
 tts/
 www/
 

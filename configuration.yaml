@@ -6,6 +6,8 @@ homeassistant:
   packages: !include_dir_named packages-enabled
   customize: !include customize.yaml
 
+default_config:
+
 group: !include groups.yaml
 automation: !include automations.yaml
 scene: !include scenes.yaml

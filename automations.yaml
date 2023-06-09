@@ -21,7 +21,7 @@
     service: media_player.turn_off
   mode: single
 - id: '1590769016333'
-  alias: Heating - Bed Room - Window open - off
+  alias: HEATING - Bed Room - Window open - off
   description: ''
   trigger:
   - type: opened
@@ -38,7 +38,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1590769182078'
-  alias: Heating - Bed Room - Window close - on
+  alias: HEATING - Bed Room - Window close - on
   description: ''
   trigger:
   - type: not_opened
@@ -57,7 +57,7 @@
     data: {}
   mode: single
 - id: '1590773879107'
-  alias: 10 leaving home - Heating - eco
+  alias: 10 leaving home - HEATING - eco
   description: ''
   trigger:
   - entity_id:
@@ -76,7 +76,7 @@
     service: climate.set_preset_mode
   mode: single
 - id: '1590824968802'
-  alias: 10 coming home - Heating - comfort
+  alias: 10 coming home - HEATING - comfort
   description: ''
   trigger:
   - entity_id: group.all_persons
@@ -90,7 +90,7 @@
     service: climate.set_preset_mode
   mode: single
 - id: '1597827460793'
-  alias: wake up Martin - Light
+  alias: TIME - wake up Martin - Light
   description: ''
   trigger:
   - platform: time_pattern
@@ -113,7 +113,7 @@
     service: light.turn_on
   mode: single
 - id: '1602935712311'
-  alias: Heating - Bath - Window close - on
+  alias: HEATING - Bath - Window close - on
   description: ''
   trigger:
   - type: not_opened
@@ -132,7 +132,7 @@
     data: {}
   mode: single
 - id: '1602936184216'
-  alias: Heating - Bath - Window open - off
+  alias: HEATING - Bath - Window open - off
   description: ''
   trigger:
   - type: opened
@@ -149,7 +149,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1607074534569'
-  alias: 10 Heating - perimeter - comfort
+  alias: 10 HEATING - perimeter - comfort
   description: ''
   trigger:
   - platform: zone
@@ -164,7 +164,7 @@
       preset_mode: comfort
   mode: single
 - id: '1607447231556'
-  alias: Flood Kitchen - alarm
+  alias: MONITOR - Flood Kitchen - alarm
   description: ''
   trigger:
   - type: moist
@@ -196,7 +196,7 @@
       entity_id: all
   mode: single
 - id: '1626011048565'
-  alias: Flood Kitchen - Sonos Alarm
+  alias: MONITOR - Flood Kitchen - Sonos Alarm
   description: ''
   trigger:
   - platform: time_pattern
@@ -212,7 +212,7 @@
     data: {}
   mode: single
 - id: '1634349031346'
-  alias: 99 Low battery level detection & notification for all battery sensors
+  alias: MONITOR -  Low battery level detection & notification for all battery sensors
   description: ''
   use_blueprint:
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
@@ -223,7 +223,7 @@
           message: Battery of {{sensors}} is low.
       threshold: 20
 - id: '1636987192840'
-  alias: Washing machine has finished - notify
+  alias: MONITOR - Washing machine has finished - notify
   description: ''
   trigger:
   - type: power
@@ -243,45 +243,8 @@
     data:
       message: Die Waschmaschine ist fertig.
   mode: single
-- id: '1647181130520'
-  alias: 20 Heating - Day - comfort
-  description: ''
-  trigger:
-  - platform: time
-    at: 07:00:00
-  condition:
-  - condition: state
-    entity_id: group.all_persons
-    state: home
-  action:
-  - service: script.heating_bath_set_preset_comfort
-    data: {}
-  - service: script.heating_bedroom_set_preset_comfort
-    data: {}
-  - service: script.heating_livingroom_set_preset_comfort
-    data: {}
-  - service: script.heating_lab_set_preset_comfort
-    data: {}
-  mode: single
-- id: '1647763277456'
-  alias: 20 Heating - Night - eco
-  description: ''
-  trigger:
-  - platform: time
-    at: '23:00:00'
-  condition: []
-  action:
-  - service: script.heating_bath_set_preset_eco
-    data: {}
-  - service: script.heating_bedroom_set_preset_eco
-    data: {}
-  - service: script.heating_livingroom_set_preset_eco
-    data: {}
-  - service: script.heating_lab_set_preset_eco
-    data: {}
-  mode: single
 - id: '1656158846249'
-  alias: Mausalarm - Falle 1
+  alias: MONITOR - Mausalarm - Falle 1
   description: ''
   trigger:
   - type: opened
@@ -296,7 +259,7 @@
       message: Mausalarm in Falle 1
   mode: single
 - id: '1665397971672'
-  alias: Heating - Living Room - Door open - off
+  alias: HEATING - Living Room - Door open - off
   description: ''
   trigger:
   - type: opened
@@ -313,7 +276,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1665398028741'
-  alias: Heating - Living Room - Door closed - on
+  alias: HEATING - Living Room - Door closed - on
   description: ''
   trigger:
   - type: not_opened
@@ -332,7 +295,7 @@
     data: {}
   mode: single
 - id: '1665399099491'
-  alias: Heating - Lab - Door open - off
+  alias: HEATING - Lab - Door open - off
   description: ''
   trigger:
   - type: opened
@@ -349,7 +312,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1665399269979'
-  alias: Heating - Lab - Door closed - on
+  alias: HEATING - Lab - Door closed - on
   description: ''
   trigger:
   - type: not_opened
@@ -368,7 +331,7 @@
     data: {}
   mode: single
 - id: '1666596552565'
-  alias: 99 - Fritz Tools cleanup
+  alias: SYSTEM - Fritz Tools cleanup
   description: ''
   trigger:
   - platform: time
@@ -422,13 +385,13 @@
       position: 1
   mode: single
 - id: '1681389597757'
-  alias: WallE - start
+  alias: TIME - WallE - start
   description: ''
   trigger:
   - platform: state
     entity_id:
     - group.all_persons
-    to: away
+    to: not_home
     for:
       hours: 0
       minutes: 5
@@ -451,7 +414,7 @@
           milliseconds: 0
   mode: single
 - id: '1682846488708'
-  alias: 99 - Backup data
+  alias: SYSTEM  - Backup data
   description: ''
   trigger:
   - platform: time
@@ -462,7 +425,7 @@
     data: {}
   mode: single
 - id: '1682854788462'
-  alias: 99 - Upload latest backup
+  alias: SYSTEM - Upload latest backup
   description: ''
   trigger:
   - platform: time
@@ -473,7 +436,7 @@
     data: {}
   mode: single
 - id: '1682854898667'
-  alias: 99 - Delete old backups
+  alias: SYSTEM - Delete old backups
   description: ''
   trigger:
   - platform: time
@@ -482,4 +445,30 @@
   action:
   - service: shell_command.delete_old_backups
     data: {}
+  mode: single
+- id: '1684906613532'
+  alias: 'Kamera 3 - sunrise '
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 6
+  mode: single
+- id: '1684906670045'
+  alias: Kamera 3 - sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - service: shell_command.kamera3_position
+    data:
+      position: 1
   mode: single

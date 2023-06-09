@@ -1,5 +1,5 @@
 - id: oodobohSheuX7ic5
-  alias: 10 leaving Home - everything off
+  alias: MEDIA - leaving Home - off
   description: ''
   trigger:
   - entity_id: group.all_persons
@@ -10,9 +10,6 @@
       minutes: 15
       seconds: 0
   action:
-  - data:
-      entity_id: all
-    service: light.turn_off
   - data:
       entity_id: all
     service: media_player.media_stop
@@ -57,7 +54,7 @@
     data: {}
   mode: single
 - id: '1590773879107'
-  alias: 10 leaving home - HEATING - eco
+  alias: HEATING - leaving home - eco
   description: ''
   trigger:
   - entity_id:
@@ -76,7 +73,7 @@
     service: climate.set_preset_mode
   mode: single
 - id: '1590824968802'
-  alias: 10 coming home - HEATING - comfort
+  alias: HEATING -  coming home - comfort
   description: ''
   trigger:
   - entity_id: group.all_persons
@@ -90,7 +87,7 @@
     service: climate.set_preset_mode
   mode: single
 - id: '1597827460793'
-  alias: TIME - wake up Martin - Light
+  alias: LIGHT - wake up Martin
   description: ''
   trigger:
   - platform: time_pattern
@@ -149,7 +146,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1607074534569'
-  alias: 10 HEATING - perimeter - comfort
+  alias: HEATING - perimeter - comfort
   description: ''
   trigger:
   - platform: zone
@@ -181,7 +178,7 @@
         channel: Alarm
   mode: single
 - id: '1610097482157'
-  alias: 10 coming home - Lights on
+  alias: LIGHT - coming home - Lights on
   description: ''
   trigger:
   - platform: state
@@ -343,7 +340,7 @@
       device_id: cb7fe6ff2c0d6bfe06046f9003819aaa
   mode: single
 - id: '1674492461101'
-  alias: 10 leaving home - Kamera 2
+  alias: CAMERA - Kamera 2 - leaving home
   description: ''
   trigger:
   - platform: state
@@ -357,7 +354,7 @@
       position: 1
   mode: single
 - id: '1681130457609'
-  alias: Kamera 3 - coming home
+  alias: CAMERA - Kamera 3 - coming home
   description: ''
   trigger:
   - platform: state
@@ -371,7 +368,7 @@
       position: 8
   mode: single
 - id: '1681130589564'
-  alias: Kamera 3 - leaving home
+  alias: CAMERA - Kamera 3 - leaving home
   description: ''
   trigger:
   - platform: state
@@ -385,7 +382,7 @@
       position: 1
   mode: single
 - id: '1681389597757'
-  alias: TIME - WallE - start
+  alias: MISC - WallE - start
   description: ''
   trigger:
   - platform: state
@@ -447,7 +444,7 @@
     data: {}
   mode: single
 - id: '1684906613532'
-  alias: 'Kamera 3 - sunrise '
+  alias: 'CAMERA - Kamera 3 - sunrise '
   description: ''
   trigger:
   - platform: sun
@@ -460,7 +457,7 @@
       position: 6
   mode: single
 - id: '1684906670045'
-  alias: Kamera 3 - sunset
+  alias: CAMERA - Kamera 3 - sunset
   description: ''
   trigger:
   - platform: sun
@@ -471,4 +468,21 @@
   - service: shell_command.kamera3_position
     data:
       position: 1
+  mode: single
+- id: '1686288860362'
+  alias: LIGHT - leaving home - lights off
+  description: ''
+  trigger:
+  - entity_id: group.all_persons
+    platform: state
+    to: not_home
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+  condition: []
+  action:
+  - data:
+      entity_id: all
+    service: light.turn_off
   mode: single

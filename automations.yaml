@@ -425,7 +425,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 6
+      position: 3
   mode: single
 - id: '1684906670045'
   alias: CAMERA - Kamera 3 - sunset
@@ -438,7 +438,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 1
+      position: 2
   mode: single
 - id: '1686288860362'
   alias: LIGHT - leaving home - lights off

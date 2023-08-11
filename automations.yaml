@@ -392,17 +392,6 @@
   - service: backup.create
     data: {}
   mode: single
-- id: '1682854788462'
-  alias: SYSTEM - Upload latest backup
-  description: ''
-  trigger:
-  - platform: time
-    at: 04:30:00
-  condition: []
-  action:
-  - service: shell_command.upload_lastest_backup
-    data: {}
-  mode: single
 - id: '1682854898667'
   alias: SYSTEM - Delete old backups
   description: ''

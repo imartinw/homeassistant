@@ -215,7 +215,7 @@
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
     input:
       actions:
-      - service: notify.notify
+      - service: notify.mobile_app_phone_martin
         data:
           message: Battery of {{sensors}} is low.
       threshold: 20

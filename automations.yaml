@@ -446,3 +446,20 @@
       entity_id: all
     service: light.turn_off
   mode: single
+- id: '1694441681933'
+  alias: Sonos - coming home - play Trek Hail
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.all_persons
+    to: home
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: script.sonos_play_trek_hail
+    data: {}
+  mode: single

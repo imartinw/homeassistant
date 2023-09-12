@@ -11,6 +11,8 @@
 .cloud/
 .storage/
 backups/
+blueprints/automation/3rd_party
+blueprints/script/3rd_party
 tts/
 www/
 

@@ -2,7 +2,7 @@ blueprint:
   name: Heating set preset
   description: Set the preset of a heating but respect the open / close state of the window
   domain: script
-  source_url: https://gitlab.martinwiesemann.de/martin/homeassistant/-/blob/master/blueprints/script/imartinw/heating_set_preset.yaml
+  source_url: https://github.com/imartinw/homeassistant/blob/main/blueprints/script/imartinw/heating_set_preset.yaml
   input:
     heating_device:
       name: Heating Device

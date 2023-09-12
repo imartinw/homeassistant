@@ -1,0 +1,32 @@
+#
+# InfluxDB
+#
+
+influxdb:
+  api_version: 2
+  host: !secret influxdb_host
+  port: 443
+  ssl: true
+  token: !secret influxdb_token
+  organization: !secret influxdb_organization
+  bucket: smarthome
+  tags:
+    source: HA
+  tags_attributes:
+    - friendly_name
+  default_measurement: units
+  include:
+    entities:
+      - sensor.lumi_lumi_weather_livingroom_temperature
+      - sensor.lumi_lumi_weather_lab_temperature
+      - sensor.lumi_lumi_weather_bath_temperature
+      - sensor.lumi_lumi_weather_bedroom_temperature
+      - sensor.lumi_lumi_weather_outside_temperature
+      - sensor.lumi_lumi_weather_livingroom_humidity
+      - sensor.lumi_lumi_weather_lab_humidity
+      - sensor.lumi_lumi_weather_bath_humidity
+      - sensor.lumi_lumi_weather_bedroom_humidity
+      - sensor.lumi_lumi_weather_outside_humidity
+      - sensor.lumi_lumi_weather_outside_pressure
+
+# end of file

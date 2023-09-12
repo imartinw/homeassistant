@@ -3,10 +3,5 @@
 #
 
 notify:
-  - name: xmpp
-    platform: xmpp
-    sender: !secret xmpp_username
-    password: !secret xmpp_password
-    recipient: !secret xmpp_receiver
-    tls: true
-    verify: false
+
+#  vim: set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 expandtab : 

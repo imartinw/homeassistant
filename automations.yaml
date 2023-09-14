@@ -208,17 +208,6 @@
   - service: script.sonos_alarm_water_leakage_kitchen
     data: {}
   mode: single
-- id: '1634349031346'
-  alias: MONITOR -  Low battery level detection & notification for all battery sensors
-  description: ''
-  use_blueprint:
-    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
-    input:
-      actions:
-      - service: notify.mobile_app_phone_martin
-        data:
-          message: Battery of {{sensors}} is low.
-      threshold: 20
 - id: '1636987192840'
   alias: MONITOR - Washing machine has finished - notify
   description: ''
@@ -365,7 +354,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 8
+      position: 1
   mode: single
 - id: '1681130589564'
   alias: CAMERA - Kamera 3 - leaving home
@@ -379,7 +368,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 1
+      position: 2
   mode: single
 - id: '1682846488708'
   alias: SYSTEM  - Backup data
@@ -463,3 +452,13 @@
   - service: script.sonos_play_trek_hail
     data: {}
   mode: single
+- id: '1694678694524'
+  alias: MONITOR - Battery low
+  description: ''
+  use_blueprint:
+    path: 3rd_party/sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - service: notify.mobile_app_phone_martin
+        data:
+          message: Battery of {{sensors}} is low.

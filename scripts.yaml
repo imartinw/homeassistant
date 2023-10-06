@@ -1,28 +1,17 @@
 sonos_alarm_water_leakage_kitchen:
   alias: Sonos - Alarm
   sequence:
-  - service: media_player.volume_set
-    data:
-      volume_level: 0.8
-    target:
-      device_id:
-      - 31f62be191db4c35ba695826db174f1b
-      - c3ffb05f5e614ff7b160822fcc8c4a69
-      - f475446a19724e86af08e18a35c6943e
-      - 6fdd2af62aa6406389400590af31c284
+  - service: script.sonos_set_group_and_volume
+    data: {}
   - repeat:
       count: '03'
       sequence:
       - service: media_player.play_media
-        target:
-          device_id:
-          - 31f62be191db4c35ba695826db174f1b
-          - c3ffb05f5e614ff7b160822fcc8c4a69
-          - f475446a19724e86af08e18a35c6943e
-          - 6fdd2af62aa6406389400590af31c284
         data:
-          media_content_id: http://home-pi.fritz.box:8123/local/alarm1.wav
+          media_content_id: http://home-pi.fritz.box:8123/local/alarm1.mp3
           media_content_type: music
+        target:
+          device_id: f475446a19724e86af08e18a35c6943e
       - delay:
           hours: 0
           minutes: 0
@@ -110,6 +99,7 @@ sonos_set_group_and_volume:
   alias: Sonos - Set group and volume
   sequence:
   - service: media_player.join
+    continue_on_error: true
     data:
       group_members:
       - media_player.sonos_wohnzimmer
@@ -119,6 +109,7 @@ sonos_set_group_and_volume:
     target:
       device_id: f475446a19724e86af08e18a35c6943e
   - service: media_player.volume_set
+    continue_on_error: true
     data:
       volume_level: 0.3
     target:
@@ -136,7 +127,7 @@ sonos_play_trek_hail:
   - service: media_player.play_media
     data:
       media_content_type: music
-      media_content_id: https://hal.martinwiesemann.de/local/tos_captain_enters_bridge.mp3
+      media_content_id: http://home-pi.fritz.box:8123/local/tos_captain_enters_bridge.mp3
     target:
       device_id: f475446a19724e86af08e18a35c6943e
   mode: single

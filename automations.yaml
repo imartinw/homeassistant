@@ -207,6 +207,17 @@
   action:
   - service: script.sonos_alarm_water_leakage_kitchen
     data: {}
+  - service: tts.speak
+    data:
+      cache: true
+      media_player_entity_id: media_player.sonos_flur
+      message: Wasserleck in der Kueche
+      language: de
+    target:
+      entity_id: tts.google_de_de
+  - service: notify.mobile_app_phone_martin
+    data:
+      message: Wasserleck in der Kueche
   mode: single
 - id: '1636987192840'
   alias: MONITOR - Washing machine has finished - notify

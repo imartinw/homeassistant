@@ -146,7 +146,7 @@
     hvac_mode: 'off'
   mode: single
 - id: '1607074534569'
-  alias: HEATING - perimeter - comfort
+  alias: HEATING - proximity - comfort
   description: ''
   trigger:
   - platform: zone

@@ -97,17 +97,18 @@
     entity_id: person.martin
     state: home
   - condition: template
-    value_template: '{{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
+    value_template: '  {{ ((((state_attr(''sensor.phone_martin_next_alarm'', ''Time
       in Milliseconds'') | int / 1000) - (utcnow().strftime("%s") | int)) / 60) |
-      int) == 30 }}'
+      int) == 15 }}'
   action:
   - data:
       brightness: 255
       color_temp: 447
       effect: none
-      entity_id: light.schlafzimmer
-      transition: 1800
+      transition: 300
     service: light.turn_on
+    target:
+      entity_id: light.schlafzimmer
   mode: single
 - id: '1602935712311'
   alias: HEATING - Bath - Window close - on

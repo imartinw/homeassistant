@@ -474,3 +474,40 @@
       - service: notify.mobile_app_phone_martin
         data:
           message: Battery of {{sensors}} is low.
+- id: '1699184994746'
+  alias: HEATING - night - eco
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  condition: []
+  action:
+  - service: script.heating_livingroom_set_preset_eco
+    data: {}
+  - service: script.heating_lab_set_preset_eco
+    data: {}
+  - service: script.heating_bath_set_preset_eco
+    data: {}
+  - service: script.heating_bedroom_set_preset_eco
+    data: {}
+  mode: single
+- id: '1699185207075'
+  alias: HEATING - day - comfort
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition:
+  - condition: state
+    entity_id: group.all_persons
+    state: home
+  action:
+  - service: script.heating_livingroom_set_preset_comfort
+    data: {}
+  - service: script.heating_lab_set_preset_comfort
+    data: {}
+  - service: script.heating_bath_set_preset_comfort
+    data: {}
+  - service: script.heating_bedroom_set_preset_comfort
+    data: {}
+  mode: single

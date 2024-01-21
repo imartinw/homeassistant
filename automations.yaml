@@ -366,7 +366,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 1
+      position: 8
   mode: single
 - id: '1681130589564'
   alias: CAMERA - Kamera 3 - leaving home
@@ -380,7 +380,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 2
+      position: 1
   mode: single
 - id: '1682846488708'
   alias: SYSTEM  - Backup data
@@ -415,7 +415,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 5
+      position: 2
   mode: single
 - id: '1684906670045'
   alias: CAMERA - Kamera 3 - sunset
@@ -428,7 +428,7 @@
   action:
   - service: shell_command.kamera3_position
     data:
-      position: 2
+      position: 1
   mode: single
 - id: '1686288860362'
   alias: LIGHT - leaving home - lights off
@@ -496,7 +496,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 07:00:00
+    at: 06:00:00
   condition:
   - condition: state
     entity_id: group.all_persons

@@ -496,7 +496,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 06:00:00
+    at: 07:00:00
   condition:
   - condition: state
     entity_id: group.all_persons
@@ -510,4 +510,67 @@
     data: {}
   - service: script.heating_bedroom_set_preset_comfort
     data: {}
+  mode: single
+- id: '1708105695021'
+  alias: MONITOR - Dryer has finished - notify
+  description: ''
+  trigger:
+  - type: current
+    platform: device
+    device_id: 4ab727161198d09db72f3db9077b59a5
+    entity_id: 02fa80fd0d75a9d6a6ac2eeed49be314
+    domain: sensor
+    below: 1
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.notify
+    data:
+      message: Der Trockner ist fertig.
+  mode: single
+- id: '1709725384247'
+  alias: NFC Tag - Desk
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: ae0b8d47-52f9-4bc9-b98d-bfc4e4424736
+  condition: []
+  action:
+  - type: turn_on
+    device_id: c61d332f907b49c0a154626b76c3a9eb
+    entity_id: 058aa572555b26e61aa117e39dd7be18
+    domain: switch
+  - service: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      area_id: a661129e107511ebaae3879635fdfa9e
+  - service: climate.set_preset_mode
+    metadata: {}
+    data:
+      preset_mode: comfort
+    target:
+      area_id: a661129e107511ebaae3879635fdfa9e
+  mode: single
+- id: '1709725848331'
+  alias: NFC Tag - Bed
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 1f7bc77c-64b8-4ae8-8a0f-68c4cf06f6c6
+  condition: []
+  action:
+  - service: climate.set_preset_mode
+    metadata: {}
+    data:
+      preset_mode: eco
+    target:
+      area_id:
+      - 05f5de06b095458daa5299a1b125c1b3
+      - 8b35cee82e3042cea4a6a9fb6f71abde
+      - 479fc1f710c3442d912b65cd08775308
+      - a661129e107511ebaae3879635fdfa9e
   mode: single
